@@ -27,44 +27,44 @@
             </div>
             <p>Choose your reader below to subscribe to this feed:</p>
         </section>
-        <ul>
-            <li>
+        <ul id="readers">
+            <li id="artemis">
                 <a href="https://artemis.jamesg.blog/add?url=" data-action="subscribe">
                     <img src="../icons/artemis.svg" alt="Artemis Icon" />
                     Artemis
                 </a>
             </li>
-            <li>
+            <li id="feedbin">
                 <a href="https://www.newsblur.com/?url=" data-action="subscribe">
                     <img src="../icons/feedbin.svg" alt="Feedbin Icon" />
                     Feedbin
                 </a>
             </li>
-            <li>
+            <li id="newsblur">
                 <a href="https://www.newsblur.com/?url=" data-action="subscribe">
                     <img src="../icons/newsblur.png" alt="Newsblur Icon" />
                     Newsblur
                 </a>
             </li>
-            <li>
+            <li id="inoreader">
                 <a href="https://www.inoreader.com/search/feeds/?url=" data-action="subscribe">
                     <img src="../icons/inoreader.jpg" alt="Inoreader Icon" />
                     Inoreader
                 </a>
             </li>
-            <li>
+            <li id="netnewswire">
                 <a href="netnewswire://" data-action="subscribe">
                     <img src="../icons/netnewswire.png" alt="NetNewsWire Icon" />
                     NetNewsWire
                 </a>
             </li>
-            <li>
+            <li id="feedly">
                 <a href="https://feedly.com/i/discover/sources/search/feed/" data-action="subscribe">
                     <img src="../icons/feedly.png" alt="Feedly Icon" />
                     Feedly
                 </a>
             </li>
-            <li>
+            <li id="tapestry">
                 <a href="tapestry://feedfinder?url=" data-action="subscribe">
                     <img src="../icons/tapestry.webp" alt="Tapestry Icon" />
                     Tapestry
@@ -77,23 +77,62 @@
         </footer>
     </main>
     <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        // if "url" does not exist, redirect to home
+        if (!urlParams.has('url')) {
+            window.location.href = '/';
+        }
+
+        // if doesn't start with https://, add
+        if (!urlParams.get('url').startsWith('https://') && !urlParams.get('url').startsWith('http://')) {
+            urlParams.set('url', 'https://' + urlParams.get('url'));
+        }
+
         var dataUrls = document.querySelectorAll('a[data-action="subscribe"]');
         for (var dataUrl in dataUrls) {
             var url = dataUrls[dataUrl].href;
             // get url param
-            var urlParam = new URLSearchParams(window.location.search).get('url');
+            var urlParam = urlParams.get('url');
             dataUrls[dataUrl].href += encodeURIComponent(urlParam);
             document.querySelector('input[type="url"]').value = urlParam || '';
         }
-        var urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('ref') == 'home') {
             document.querySelector('#preamble').style.display = 'none';
         }
         if (urlParams.get('url')) {
-            document.querySelector('#domain').textContent = new URL(new URLSearchParams(window.location.search).get('url')).hostname;
-        } else {
-            window.location.href = '/';
+            document.querySelector('#domain').textContent = new URL(urlParams.get('url')).hostname;
         }
+
+        if (urlParams.get('prefer')) {
+            var preferred = document.getElementById(urlParams.get('prefer'));
+            var readers = document.getElementById('readers');
+            if (preferred) {
+                readers.prepend(preferred);
+                preferred.classList.add('preferred');
+            }
+        }
+    </script>
+    <script>
+        /* add http:// to URL fields on blur or when enter is pressed */
+        /* https://aaronparecki.com/2018/06/03/4/url-form-field */
+        document.addEventListener('DOMContentLoaded', function() {
+            function addDefaultScheme(target) {
+            if(target.value.match(/^(?!https?:).+\..+/)) {
+                target.value = "http://"+target.value;
+            }
+            }
+            var elements = document.querySelectorAll("input[type=url]");
+            Array.prototype.forEach.call(elements, function(el, i){
+            el.addEventListener("blur", function(e){
+                addDefaultScheme(e.target);
+            });
+            el.addEventListener("keydown", function(e){
+                if(e.keyCode == 13) {
+                addDefaultScheme(e.target);
+                }
+            });
+            });
+        });
     </script>
 </body>
 </html>

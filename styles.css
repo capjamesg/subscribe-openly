@@ -10,7 +10,9 @@ ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    columns: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 li a {
     display: flex;
@@ -46,7 +48,6 @@ ul li img {
 }
 ul li {
     font-size: 1.25rem;
-    margin-bottom: 1rem;
 }
 hgroup {
     text-align: center;
@@ -81,4 +82,9 @@ a {
 }
 footer {
     margin-bottom: 3rem;
+}
+@media (prefers-color-scheme: dark) {
+    ul {
+        grid-template-columns: 1fr;
+    }
 }

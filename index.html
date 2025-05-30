@@ -13,13 +13,17 @@
         <hgroup>
             <img src="icon.svg" alt="Subscribe Openly Icon" width="64" height="64">
             <h1>Subscribe Openly</h1>
-            <p>Add Subscribe Openly before your feed links so users see a list of readers instead of an XML file.</p>
+            <p>Create a link to your web feed that lets users subscribe with their preferred reader.</p>
         </hgroup>
         <label for="url">Your feed URL:</label>
         <form method="GET" action="/subscribe/">
-            <input type="url" placeholder="https://example.com" name="url" id="url" pattern="https?://.+" required>
+            <input type="url" placeholder="https://example.com/feed/" name="url" id="url" pattern="https?://.+" required>
             <button type="submit">Subscribe</button>
         </form>
+        <section>
+            <h2>Demo</h2>
+            <img src="screenshot.png" id="demo-screenshot" />
+        </section>
         <footer>
             <p><a href="/about/">Use Subscribe Openly on your own website.</a></p>
             <p>Maintained by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/subscribe-openly">View source</a>.</p>

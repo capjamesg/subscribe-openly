@@ -91,9 +91,8 @@
         var dataUrls = document.querySelectorAll('a[data-action="subscribe"]');
         for (var dataUrl in dataUrls) {
             var url = dataUrls[dataUrl].href;
-            // get url param
             var urlParam = urlParams.get('url');
-            dataUrls[dataUrl].href += encodeURIComponent(urlParam);
+            dataUrls[dataUrl].href += urlParam;
             document.querySelector('input[type="url"]').value = urlParam || '';
         }
         if (urlParams.get('ref') == 'home') {

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscribe Openly</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <meta name="description" content="Subscribe to websites openly with your preferred feed reader.">
 </head>
 <body>
     <main>
@@ -19,17 +21,5 @@
             <p>Inspired by <a href="https://shareopenly.org">Share Openly</a>.</p>
         </footer>
     </main>
-    <script>
-        var dataUrls = document.querySelectorAll('a[data-action="subscribe"]');
-        for (var dataUrl in dataUrls) {
-            var url = dataUrls[dataUrl].href;
-            if (url.endsWith('/')) {
-                url = url.slice(0, -1);
-            }
-            // get url param
-            var urlParam = new URLSearchParams(window.location.search).get('url');
-            dataUrls[dataUrl].href += encodeURIComponent(urlParam);
-        }
-    </script>
 </body>
 </html>

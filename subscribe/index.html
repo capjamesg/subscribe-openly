@@ -67,6 +67,8 @@
                 </a>
             </li>
         </ul>
+        <p>Use a different reader? You can also paste the feed into your reader:</p>
+        <pre><span id="feed-url"></span></pre>
         <footer>
             <p><a href="/about/">Use Subscribe Openly on your own website.</a></p>
             <p>Maintained by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/subscribe-openly">View source</a>.</p>
@@ -96,6 +98,7 @@
         if (urlParams.get('url')) {
             document.querySelector('#domain').textContent = new URL(urlParams.get('url')).hostname;
             document.querySelector('#domain-heading').textContent = ' to ' + new URL(urlParams.get('url')).hostname;
+            document.querySelector('#feed-url').textContent = urlParams.get('url');
         }
 
         if (urlParams.get('prefer')) {

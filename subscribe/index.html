@@ -20,7 +20,7 @@
         </form>
         <section>
             <div id="preamble">
-                <p>jamesg.blog has a web feed ✨</p>
+                <p><span id="domain"></span> has a web feed ✨</p>
                 <p>This means you can subscribe to them in a web reader.</p>
                 <p>New to web feeds? <a href="https://aboutfeeds.com">Learn more</a>.</p>
                 <hr>
@@ -29,39 +29,51 @@
         </section>
         <ul>
             <li>
-                <a href="https://feedly.com/i/discover/sources/search/feed/" data-action="subscribe">
-                    <img src="https://feedly.com/favicon.ico" alt="Feedly Icon" />
-                    Feedly
+                <a href="https://artemis.jamesg.blog/add?url=" data-action="subscribe">
+                    <img src="../icons/artemis.svg" alt="Artemis Icon" />
+                    Artemis
                 </a>
             </li>
             <li>
-                <a href="https://www.inoreader.com/subscribe?url=" data-action="subscribe">
-                    <img src="https://www.inoreader.com/favicon.ico" alt="Inoreader Icon" />
-                    Inoreader
+                <a href="https://multiline.co/images/icons/feedbin.svg" data-action="subscribe">
+                    <img src="../icons/feedbin.svg" alt="Feedbin Icon" />
+                    Feedbin
                 </a>
             </li>
             <li>
                 <a href="https://www.newsblur.com/?url=" data-action="subscribe">
-                    <img src="https://www.newsblur.com/favicon.ico" alt="Newsblur Icon" />
+                    <img src="../icons/newsblur.png" alt="Newsblur Icon" />
                     Newsblur
                 </a>
             </li>
             <li>
+                <a href="https://www.inoreader.com/search/feeds/?url=" data-action="subscribe">
+                    <img src="../icons/inoreader.jpg" alt="Inoreader Icon" />
+                    Inoreader
+                </a>
+            </li>
+            <li>
                 <a href="netnewswire://" data-action="subscribe">
-                    <img src="https://netnewswire.com/images/nnw-6-icon-256.png" alt="NetNewsWire Icon" />
+                    <img src="../icons/netnewswire.png" alt="NetNewsWire Icon" />
                     NetNewsWire
                 </a>
             </li>
             <li>
-                <a href="https://artemis.jamesg.blog/add?url=" data-action="subscribe">
-                    <img src="https://artemis.jamesg.blog/assets/mascot-newspaper.svg" alt="Artemis Icon" />
-                    Artemis
+                <a href="https://feedly.com/i/discover/sources/search/feed/" data-action="subscribe">
+                    <img src="../icons/feedly.png" alt="Feedly Icon" />
+                    Feedly
+                </a>
+            </li>
+            <li>
+                <a href="tapestry://feedfinder?url=" data-action="subscribe">
+                    <img src="../icons/tapestry.webp" alt="Tapestry Icon" />
+                    Tapestry
                 </a>
             </li>
         </ul>
         <footer>
-            <p>Maintained by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/subscribe-openly">View source</a>.</p>
             <p><a href="/about/">Use Subscribe Openly on your own website.</a></p>
+            <p>Maintained by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/subscribe-openly">View source</a>.</p>
         </footer>
     </main>
     <script>
@@ -73,8 +85,14 @@
             dataUrls[dataUrl].href += encodeURIComponent(urlParam);
             document.querySelector('input[type="url"]').value = urlParam || '';
         }
-        if (new URLSearchParams(window.location.search).get('ref') == 'home') {
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('ref') == 'home') {
             document.querySelector('#preamble').style.display = 'none';
+        }
+        if (urlParams.get('url')) {
+            document.querySelector('#domain').textContent = new URL(new URLSearchParams(window.location.search).get('url')).hostname;
+        } else {
+            window.location.href = '/';
         }
     </script>
 </body>

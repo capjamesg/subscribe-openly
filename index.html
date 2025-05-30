@@ -16,10 +16,16 @@
             <p style="max-width: 25rem; text-align: center; margin: auto; margin-bottom: 1rem;">Create a link to your web feed that lets users subscribe with their preferred reader.</p>
         </hgroup>
         <label for="url">Your feed URL:</label>
-        <form method="GET" action="/subscribe/">
+        <form method="GET" action="">
             <input type="url" placeholder="https://example.com/feed/" name="url" id="url" pattern="https?://.+" required>
             <button type="submit">Create a Link</button>
         </form>
+        <section id="link">
+            <h2>Your Subscribe Openly Link</h2>
+            <p>Copy the link below to use on your website:</p>
+            <pre>https://subscribeopenly.net/subscribe/?url=<span id="feed-url"></span></pre>
+            <p><a id="feed-url-demo" href="#" target="_blank">Open this link</a> to see how it works.</p>
+        </section>
         <section>
             <h2>Demo</h2>
             <p>Here is an example of a Subscribe Openly link for a web feed:</p>
@@ -49,6 +55,23 @@
                 addDefaultScheme(e.target);
                 }
             });
+            });
+        });
+        // make pre work
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlInput = document.getElementById('url');
+            var feedUrlDisplay = document.getElementById('feed-url');
+            var linkSection = document.getElementById('link');
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var feedUrl = urlInput.value.trim();
+                if (feedUrl) {
+                    feedUrlDisplay.textContent = feedUrl;
+                    linkSection.style.display = 'block';
+                    document.getElementById('feed-url-demo').href = 'https://subscribeopenly.net/subscribe/?url=' + encodeURIComponent(feedUrl);
+                } else {
+                    linkSection.style.display = 'none';
+                }
             });
         });
 

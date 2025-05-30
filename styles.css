@@ -32,6 +32,9 @@ input {
     font-size: 1.25rem;
     width: 100%;
 }
+button {
+    font-size: 1.25rem;
+}
 ul li img {
     height: 3rem;
 }

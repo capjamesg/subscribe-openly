@@ -12,7 +12,7 @@
     <main>
         <hgroup style="margin-top: 0;">
             <img src="../icon.svg" alt="Subscribe Openly Icon" width="64" height="64">
-            <h1><a href="/">Subscribe Openly</a></h1>
+            <h1><a href="/">Subscribe<span id="domain-heading"></span></a></h1>
         </hgroup>
         <section>
             <div id="preamble">
@@ -95,6 +95,7 @@
         }
         if (urlParams.get('url')) {
             document.querySelector('#domain').textContent = new URL(urlParams.get('url')).hostname;
+            document.querySelector('#domain-heading').textContent = ' to ' + new URL(urlParams.get('url')).hostname;
         }
 
         if (urlParams.get('prefer')) {

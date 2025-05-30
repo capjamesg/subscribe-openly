@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe Openly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Subscribe Openly</h1>
+        <form method="GET" action="">
+            <input type="url" placeholder="https://example.com" />
+            <button type="submit">Subscribe</button>
+        </form>
+        <p>Subscribe to this site with:</p>
+        <ul>
+            <li>
+                <a href="https://feedly.com/i/discover/sources/search/feed/" data-action="subscribe">
+                    <img src="https://feedly.com/favicon.ico" alt="Feedly Icon" />
+                    Feedly
+                </a>
+            </li>
+            <li>
+                <a href="https://www.inoreader.com/subscribe?url=" data-action="subscribe">
+                    <img src="https://www.inoreader.com/favicon.ico" alt="Inoreader Icon" />
+                    Inoreader
+                </a>
+            </li>
+            <li>
+                <a href="https://www.newsblur.com/?url=" data-action="subscribe">
+                    <img src="https://www.newsblur.com/favicon.ico" alt="Newsblur Icon" />
+                    Newsblur
+                </a>
+            </li>
+            <li>
+                <a href="netnewswire://" data-action="subscribe">
+                    <img src="https://netnewswire.com/images/nnw-6-icon-256.png" alt="NetNewsWire Icon" />
+                    NetNewsWire
+                </a>
+            </li>
+            <li>
+                <a href="https://artemis.jamesg.blog/add?url=">
+                    <img src="https://artemis.jamesg.blog/assets/mascot-newspaper.svg" alt="Artemis Icon" />
+                    Artemis
+                </a>
+            </li>
+        </ul>
+        <footer>
+            <p>Maintained by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/subscribe-openly">View source</a>.</p>
+            <p>Inspired by <a href="https://shareopenly.org">Share Openly</a>.</p>
+        </footer>
+    </main>
+    <script>
+        var dataUrls = document.querySelectorAll('a[data-action="subscribe"]');
+        for (var dataUrl in dataUrls) {
+            var url = dataUrls[dataUrl].href;
+            if (url.endsWith('/')) {
+                url = url.slice(0, -1);
+            }
+            // get url param
+            var urlParam = new URLSearchParams(window.location.search).get('url');
+            dataUrls[dataUrl].href += encodeURIComponent(urlParam);
+        }
+    </script>
+</body>
+</html>

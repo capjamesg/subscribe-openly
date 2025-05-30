@@ -38,7 +38,12 @@ input {
 }
 button {
     font-size: 1.25rem;
+    /* // override apple styles, but keep firefox */
     -webkit-appearance: none;
+    appearance: none;
+    background-color: orange;
+    border: 1px solid light-dark(black, orange);
+    color: black;
 }
 footer {
     text-align: center;

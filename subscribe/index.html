@@ -14,10 +14,6 @@
             <img src="../icon.svg" alt="Subscribe Openly Icon" width="64" height="64">
             <h1><a href="/">Subscribe Openly</a></h1>
         </hgroup>
-        <form method="GET" action="/subscribe/">
-            <input type="url" placeholder="https://example.com" name="url" id="url" pattern="https?://.+" required>
-            <button type="submit">Subscribe</button>
-        </form>
         <section>
             <div id="preamble">
                 <p><span id="domain"></span> has a web feed ✨</p>
@@ -93,7 +89,6 @@
             var url = dataUrls[dataUrl].href;
             var urlParam = urlParams.get('url');
             dataUrls[dataUrl].href += urlParam;
-            document.querySelector('input[type="url"]').value = urlParam || '';
         }
         if (urlParams.get('ref') == 'home') {
             document.querySelector('#preamble').style.display = 'none';
@@ -110,28 +105,6 @@
                 preferred.classList.add('preferred');
             }
         }
-    </script>
-    <script>
-        /* add http:// to URL fields on blur or when enter is pressed */
-        /* https://aaronparecki.com/2018/06/03/4/url-form-field */
-        document.addEventListener('DOMContentLoaded', function() {
-            function addDefaultScheme(target) {
-            if(target.value.match(/^(?!https?:).+\..+/)) {
-                target.value = "http://"+target.value;
-            }
-            }
-            var elements = document.querySelectorAll("input[type=url]");
-            Array.prototype.forEach.call(elements, function(el, i){
-            el.addEventListener("blur", function(e){
-                addDefaultScheme(e.target);
-            });
-            el.addEventListener("keydown", function(e){
-                if(e.keyCode == 13) {
-                addDefaultScheme(e.target);
-                }
-            });
-            });
-        });
     </script>
 </body>
 </html>

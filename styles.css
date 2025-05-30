@@ -94,3 +94,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+#demo-screenshot {
+    width: 100%;
+    border: 1px solid light-dark(#ccc, #444);
+}

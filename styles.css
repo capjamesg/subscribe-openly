@@ -1,0 +1,41 @@
+
+* {
+    font-family: "PT Sans", sans-serif;
+}
+html {
+    color-scheme: light dark;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 1rem;
+    border: 1px solid light-dark(#ccc, #444);
+    padding: 1rem;
+}
+main {
+    max-width: 35rem;
+    margin: auto;
+}
+form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+input {
+    font-size: 1.25rem;
+    width: 100%;
+}
+ul li img {
+    height: 3rem;
+}
+ul li {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}

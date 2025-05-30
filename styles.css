@@ -44,6 +44,7 @@ button {
     background-color: orange;
     border: 1px solid light-dark(black, orange);
     color: black;
+    flex: 1 40%;
 }
 footer {
     text-align: center;
@@ -93,8 +94,14 @@ footer {
     ul {
         grid-template-columns: 1fr;
     }
+    form {
+        flex-direction: column;
+    }
 }
 #demo-screenshot {
     width: 100%;
     border: 1px solid light-dark(#ccc, #444);
+}
+#link {
+    display: none;
 }

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscribe Openly</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <meta name="description" content="Subscribe to websites openly with your preferred feed reader.">
 </head>
 <body>
     <main>
@@ -34,13 +36,13 @@
                 </a>
             </li>
             <li>
-                <a href="netnewswire://" data-action="subscribe">
+                <a href="netnewswire://" data-action="subscribe" data-action="subscribe">
                     <img src="https://netnewswire.com/images/nnw-6-icon-256.png" alt="NetNewsWire Icon" />
                     NetNewsWire
                 </a>
             </li>
             <li>
-                <a href="https://artemis.jamesg.blog/add?url=">
+                <a href="https://artemis.jamesg.blog/add?url=" data-action="subscribe">
                     <img src="https://artemis.jamesg.blog/assets/mascot-newspaper.svg" alt="Artemis Icon" />
                     Artemis
                 </a>
@@ -61,6 +63,7 @@
             // get url param
             var urlParam = new URLSearchParams(window.location.search).get('url');
             dataUrls[dataUrl].href += encodeURIComponent(urlParam);
+            document.querySelector('input[type="url"]').value = urlParam || '';
         }
     </script>
 </body>

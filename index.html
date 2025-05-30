@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe Openly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>Subscribe Openly</h1>
+        <label for="url">Website URL</label>
+        <form method="GET" action="/subscribe/">
+            <input type="url" placeholder="https://example.com" name="url" id="url" />
+            <button type="submit">Subscribe</button>
+        </form>
+        <footer>
+            <p>Maintained by <a href="https://jamesg.blog">capjamesg</a>. <a href="https://github.com/capjamesg/subscribe-openly">View source</a>.</p>
+            <p>Inspired by <a href="https://shareopenly.org">Share Openly</a>.</p>
+        </footer>
+    </main>
+    <script>
+        var dataUrls = document.querySelectorAll('a[data-action="subscribe"]');
+        for (var dataUrl in dataUrls) {
+            var url = dataUrls[dataUrl].href;
+            if (url.endsWith('/')) {
+                url = url.slice(0, -1);
+            }
+            // get url param
+            var urlParam = new URLSearchParams(window.location.search).get('url');
+            dataUrls[dataUrl].href += encodeURIComponent(urlParam);
+        }
+    </script>
+</body>
+</html>

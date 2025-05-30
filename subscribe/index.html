@@ -15,7 +15,7 @@
             <h1><a href="/">Subscribe Openly</a></h1>
         </hgroup>
         <form method="GET" action="/subscribe/">
-            <input type="url" placeholder="https://example.com" name="url" id="url" />
+            <input type="url" placeholder="https://example.com" name="url" id="url" pattern="https?://.+" required>
             <button type="submit">Subscribe</button>
         </form>
         <section>

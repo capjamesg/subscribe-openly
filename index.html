@@ -16,7 +16,7 @@
         </hgroup>
         <label for="url">Website URL</label>
         <form method="GET" action="/subscribe/">
-            <input type="url" placeholder="https://example.com" name="url" id="url" />
+            <input type="url" placeholder="https://example.com" name="url" id="url" pattern="https?://.+" required>
             <button type="submit">Subscribe</button>
         </form>
         <footer>

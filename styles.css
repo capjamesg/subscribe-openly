@@ -35,10 +35,21 @@ input {
 button {
     font-size: 1.25rem;
 }
+footer {
+    text-align: center;
+    margin-top: 2rem;
+}
 ul li img {
     height: 3rem;
 }
 ul li {
     font-size: 1.25rem;
     margin-bottom: 1rem;
+}
+hgroup {
+    text-align: center;
+    margin-top: 3rem;
+}
+h1 {
+    margin-top: 0;
 }

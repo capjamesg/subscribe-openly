@@ -70,7 +70,13 @@
                 <a href="https://www.feeder.co/add-feed?url=" data-action="subscribe">
                     <img src="../icons/feeder.png" alt="Feeder Icon" />
                     Feeder
-                </a>
+              </a>
+          </li>
+            <li id="feedcity">
+                <a href="https://feed.city/feed?url=" data-action="subscribe">
+                    <img src="../icons/feedcity.svg" alt="FeedCity Icon" />
+                    FeedCity
+              </a>
             </li>
         </ul>
         <details style="margin-top: 1rem;">
@@ -107,7 +113,11 @@
         for (var dataUrl in dataUrls) {
             var url = dataUrls[dataUrl].href;
             var urlParam = urlParams.get('url');
-            dataUrls[dataUrl].href += urlParam;
+            if (url == "feed://") {
+                dataUrls[dataUrl].href += encodeURI(urlParam);
+            } else {
+                dataUrls[dataUrl].href += urlParam;
+            }
         }
         if (urlParams.get('ref') == 'home') {
             document.querySelector('#preamble').style.display = 'none';

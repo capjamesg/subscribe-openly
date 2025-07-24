@@ -107,7 +107,11 @@
         for (var dataUrl in dataUrls) {
             var url = dataUrls[dataUrl].href;
             var urlParam = urlParams.get('url');
-            dataUrls[dataUrl].href += urlParam;
+            if (url == "feed://") {
+                dataUrls[dataUrl].href += encodeURI(urlParam);
+            } else {
+                dataUrls[dataUrl].href += urlParam;
+            }
         }
         if (urlParams.get('ref') == 'home') {
             document.querySelector('#preamble').style.display = 'none';

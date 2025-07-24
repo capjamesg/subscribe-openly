@@ -119,9 +119,9 @@
         for (var dataUrl in dataUrls) {
             var url = dataUrls[dataUrl].href;
             var urlParam = urlParams.get('url');
-            if (url == "feed://" && urlParam.startsWith("https://")) {
+            if (url == "feed:/" && urlParam.startsWith("https://")) {
                 dataUrls[dataUrl].href += urlParam.substring(7);
-            } else if (url == "feed://" && urlParam.startsWith("http://")) {
+            } else if (url == "feed:/" && urlParam.startsWith("http://")) {
                 dataUrls[dataUrl].href += urlParam.substring(6);
             } else {
                 dataUrls[dataUrl].href += urlParam;

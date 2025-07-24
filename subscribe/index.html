@@ -120,9 +120,9 @@
             var url = dataUrls[dataUrl].href;
             var urlParam = urlParams.get('url');
             var urlParamWithoutProtocol = 
-            if (url == "feed://" && urlParam.startswith("https://")) {
+            if (url == "feed://" && urlParam.startsWith("https://")) {
                 dataUrls[dataUrl].href += urlParam.substring(7);
-            } else if (url == "feed://" && urlParam.startswith("http://")) {
+            } else if (url == "feed://" && urlParam.startsWith("http://")) {
                 dataUrls[dataUrl].href += urlParam.substring(6);
             } else {
                 dataUrls[dataUrl].href += urlParam;

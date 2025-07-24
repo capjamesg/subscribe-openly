@@ -120,7 +120,7 @@
             var url = dataUrls[dataUrl].href;
             var urlParam = urlParams.get('url');
             if (url == "feed://") {
-                dataUrls[dataUrl].href += encodeURI(urlParam);
+                dataUrls[dataUrl].href += encodeURIComponent(urlParam);
             } else {
                 dataUrls[dataUrl].href += urlParam;
             }

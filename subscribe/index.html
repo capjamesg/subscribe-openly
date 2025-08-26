@@ -121,7 +121,7 @@
             var urlParam = urlParams.get('url');
             if (url == "feed:" && urlParam.startsWith("https://")) {
                 dataUrls[dataUrl].href += urlParam;
-            else if (url == "feed:/" && urlParam.startsWith("https://")) {
+            } else if (url == "feed:/" && urlParam.startsWith("https://")) {
                 dataUrls[dataUrl].href += urlParam.substring(7);
             } else if (url == "feed:/" && urlParam.startsWith("http://")) {
                 dataUrls[dataUrl].href += urlParam.substring(6);

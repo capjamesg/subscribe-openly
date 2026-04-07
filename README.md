@@ -1,6 +1,6 @@
 # Subscribe Openly
 
-Append `https://subscribeopenly.net/subscribe/?url=` to your web feed URL to show a pretty subscription link for users.
+Append `https://subscribeopenly.net/subscribe/?url=` to your web feed URL to show a pretty subscription link for visitors to your website who want to subscribe using a web reader.
 
 ## Example
 
